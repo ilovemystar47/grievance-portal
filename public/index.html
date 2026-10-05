@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#f8f1ec">
+    <title>The Portal of Grievances</title>
+    <link rel="stylesheet" href="base.css">
+</head>
+
+<body>
+    <div class="wrap" id="app">
+
+        <!-- login -->
+        <section data-view="login">
+            <img class="logo" src="assets/main_logo.svg" alt="Ye Olde' Portal of Grievances">
+            <div class="login bg">
+                <div class="row"><label for="u">Username :</label><input type="text" id="u" autocomplete="username" autocapitalize="none"></div>
+                <div class="row"><label for="p">Secret Password :</label><input type="password" id="p" autocomplete="current-password"></div>
+                <button class="imgbtn" id="go" aria-label="Enter"><img src="assets/login_button.svg" alt=""></button>
+            </div>
+            <div class="err" id="login-err"></div>
+            <button class="link" id="forgot">forgotten thy details? click hither!</button>
+            <div class="hintbox" id="hints">
+                <p>Thy name is the celestial object I associate you most with. The password is your favorite disney princess, plus 47.</p>
+            </div>
+        </section>
+
+        <!-- writing area -->
+        <section data-view="write" hidden>
+            <h1>Lodge Thy Grievance</h1>
+            <div class="form">
+                <div><label for="t">Title of thy Letter :</label><input type="text" id="t" maxlength="80"></div>
+                <div><label>Feelings of Thy Heart :</label>
+                    <div class="feelbox">
+                        <div class="feel">
+                            <button type="button" data-f="angry"><img src="assets/angry.svg" alt=""><span>Angry</span></button>
+                            <button type="button" data-f="sad"><img src="assets/sad.svg" alt=""><span>Sad</span></button>
+                            <button type="button" data-f="annoyed"><img src="assets/annoyed.svg" alt=""><span>Annoyed</span></button>
+                            <button type="button" data-f="exhausted"><img src="assets/exhausted.svg" alt=""><span>Exhausted</span></button>
+                            <button type="button" data-f="hurt"><img src="assets/hurt.svg" alt=""><span>Hurt</span></button>
+                            <button type="button" data-f="heh"><img src="assets/heh.svg" alt=""><span>Joyful</span></button>
+                        </div>
+                    </div>
+                </div>
+                <div><label for="b">Thy Words :</label>
+                    <div class="ta"><textarea id="b" placeholder="Hark, most beautiful princess! This be a one-way missive unto the Council. Thou shalt be told when thy poem, writ, or complaint hath been perused, yet expect no reply. Treat it as thine own diary, and pour forth whatsoever thy heart doth wish to release."></textarea></div>
+                </div>
+                <div class="err" id="write-err"></div>
+                <button class="imgbtn" id="send" aria-label="Dispatch"><img src="assets/sent_button.svg" alt=""></button>
+            </div>
+            <button class="link" id="see">behold thy past missives</button>
+            <button class="link" data-logout>take thy leave</button>
+        </section>
+
+        <!-- entries -->
+        <section data-view="list" hidden>
+            <h1 id="list-title"></h1>
+            <p class="banner" id="banner" hidden></p>
+            <div id="rows"></div>
+            <p class="empty" id="empty" hidden>No scrolls here yet, princess.</p>
+            <div class="foot">
+                <button class="link" id="new">pen a new missive</button>
+                <button class="link" data-logout>take thy leave</button>
+            </div>
+        </section>
+
+        <!-- opened entry -->
+        <section data-view="detail" hidden>
+            <div class="detail">
+                <div class="dh">
+                    <span id="d-icon"></span>
+                    <span class="wrapt"><b class="ttl" id="d-title"></b><span class="date" id="d-date"></span></span>
+                </div>
+                <p class="msg" id="d-msg"></p>
+                <label class="seen" id="seen-wrap"><input type="checkbox" id="seen"> Beheld</label>
+                <p class="st" id="d-status"></p>
+            </div>
+            <button class="link" id="back">return to the scrolls</button>
+        </section>
+
+    </div>
+
+    <template id="tpl-item">
+        <button class="item">
+            <span class="l"><b class="ttl"></b><span class="date"></span></span>
+            <span class="r"><span class="st"></span>
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                    <path d="M8 3l9 9-9 9" fill="none" stroke="currentColor" stroke-width="3.5" />
+                </svg>
+            </span>
+        </button>
+    </template>
+
+    <div class="sent" id="sent" hidden><img src="assets/sent.svg" alt="Dispatched!"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
